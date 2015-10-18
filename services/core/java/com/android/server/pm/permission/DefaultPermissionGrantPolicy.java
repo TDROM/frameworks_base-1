@@ -956,6 +956,12 @@ public final class DefaultPermissionGrantPolicy {
             grantRuntimePermissionsLPw(googlecalendarPackage, CONTACTS_PERMISSIONS, true, userId);
             grantRuntimePermissionsLPw(googlecalendarPackage, PHONE_PERMISSIONS, userId);
         }
+        // Chromium Sign-in
+        PackageParser.Package chromiumPackage = getDefaultProviderAuthorityPackageLPr("org.chromium.chrome", userId);
+        if (chromiumPackage != null) {
+            grantRuntimePermissionsLPw(chromiumPackage, CONTACTS_PERMISSIONS, userId);
+            grantRuntimePermissionsLPw(chromiumPackage, STORAGE_PERMISSIONS, userId);
+        }
 
         if (mPermissionGrantedCallback != null) {
             mPermissionGrantedCallback.onDefaultRuntimePermissionsGranted(userId);
