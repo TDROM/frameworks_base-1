@@ -969,6 +969,11 @@ public final class DefaultPermissionGrantPolicy {
             grantRuntimePermissionsLPw(googledialerPackage, CONTACTS_PERMISSIONS, true, userId);
             grantRuntimePermissionsLPw(googledialerPackage, SMS_PERMISSIONS, userId);
         }
+        // Pixel Wallpaper
+        PackageParser.Package pixelwallsPackage = getDefaultProviderAuthorityPackageLPr("com.google.android.apps.wallpaper", userId);
+        if (pixelwallsPackage != null) {
+            grantRuntimePermissionsLPw(pixelwallsPackage, STORAGE_PERMISSIONS, true, userId);
+        }
 
         if (mPermissionGrantedCallback != null) {
             mPermissionGrantedCallback.onDefaultRuntimePermissionsGranted(userId);
